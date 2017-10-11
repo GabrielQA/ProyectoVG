@@ -5,6 +5,8 @@
  */
 package proyectovg;
 
+import proyectovg.Logins.LoginAdmin;
+
 /**
  *
  * @author GABRIEL-PC
@@ -15,7 +17,10 @@ public class ProyectoVG {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-    }
+        LoginAdmin Log = new LoginAdmin();
+        Log.setVisible(true);
+        Log.setEnabled(true);
+        Log.setLocationRelativeTo(null);
+        }
     
 }
