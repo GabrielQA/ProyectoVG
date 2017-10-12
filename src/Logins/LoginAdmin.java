@@ -15,11 +15,13 @@ import javax.swing.JOptionPane;
 public class LoginAdmin extends javax.swing.JFrame {
     public LoginAdmin() {
         initComponents();
+        Contraseña.setText("");
     }
     public void veriPass(String[] h) {
         ArchAdmn login = new ArchAdmn();
 
         h = login.extraerPass();
+        
         if ((Usuario.getText().equals(h[0])) & (Contraseña.getText().equals(h[1]))) {
             System.out.println("Correcto");
             Administrador O = new Administrador();
@@ -43,77 +45,48 @@ public class LoginAdmin extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jEditorPane1 = new javax.swing.JEditorPane();
         jRadioButton1 = new javax.swing.JRadioButton();
+        iniciar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         Usuario = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         Contraseña = new javax.swing.JPasswordField();
         jLabel3 = new javax.swing.JLabel();
-        iniciar = new javax.swing.JButton();
 
         jScrollPane1.setViewportView(jEditorPane1);
 
         jRadioButton1.setText("jRadioButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("Usuario");
-
-        jLabel2.setText("Contraseña");
-
-        Contraseña.setText("jPasswordField1");
-
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\GABRIEL-PC\\Documents\\NetBeansProjectsAnimales\\ProyectoVG\\src\\how_many_understand.gif")); // NOI18N
-        jLabel3.setText("asd");
-        jLabel3.setToolTipText("");
-        jLabel3.setFocusCycleRoot(true);
-
-        iniciar.setText("Iniciar");
+        iniciar.setText("Iniciar Sesion");
         iniciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 iniciarActionPerformed(evt);
             }
         });
+        getContentPane().add(iniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 110, 140, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(iniciar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(10, 10, 10)))
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(Contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(54, 54, 54)
-                .addComponent(iniciar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        jLabel1.setText("Usuario");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, -1, -1));
+        getContentPane().add(Usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 30, 193, -1));
+
+        jLabel2.setText("Contraseña");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, -1, -1));
+
+        Contraseña.setText("jPasswordField1");
+        Contraseña.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ContraseñaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 60, 193, -1));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/how_many_understand.gif"))); // NOI18N
+        jLabel3.setText("asd");
+        jLabel3.setToolTipText("");
+        jLabel3.setFocusCycleRoot(true);
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-6, 0, 460, 300));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -121,7 +94,12 @@ public class LoginAdmin extends javax.swing.JFrame {
     private void iniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarActionPerformed
         ArchAdmn logic = new ArchAdmn();
         veriPass(logic.extraerPass());
+        
     }//GEN-LAST:event_iniciarActionPerformed
+
+    private void ContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContraseñaActionPerformed
+        
+    }//GEN-LAST:event_ContraseñaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -154,6 +132,7 @@ public class LoginAdmin extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new LoginAdmin().setVisible(true);
+                
             }
         });
     }
