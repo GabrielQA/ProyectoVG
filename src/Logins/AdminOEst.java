@@ -40,14 +40,22 @@ public class AdminOEst extends javax.swing.JFrame {
             }
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 70, 20));
 
+        jButton2.setText("C");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 80, 20));
+
+        jButton1.setText("A");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 70, 20));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 80, 20));
 
         jLabel4.setText("Cliente");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, -1, -1));
@@ -66,11 +74,20 @@ public class AdminOEst extends javax.swing.JFrame {
         Log.setVisible(true);
         Log.setEnabled(true);
         Log.setLocationRelativeTo(null);
+        dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void formMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseMoved
         // TODO add your handling code here:
     }//GEN-LAST:event_formMouseMoved
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        LoginUsu Usu = new LoginUsu();
+         Usu.setVisible(true);
+        Usu.setEnabled(true);
+        Usu.setLocationRelativeTo(null);
+        dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -13,15 +13,17 @@ import javax.swing.JOptionPane;
  * @author GABRIEL-PC
  */
 public class LoginAdmin extends javax.swing.JFrame {
+
     public LoginAdmin() {
         initComponents();
         Contraseña.setText("");
     }
+
     public void veriPass(String[] h) {
         ArchAdmn login = new ArchAdmn();
 
         h = login.extraerPass();
-        
+
         if ((Usuario.getText().equals(h[0])) & (Contraseña.getText().equals(h[1]))) {
             System.out.println("Correcto");
             Administrador O = new Administrador();
@@ -50,7 +52,9 @@ public class LoginAdmin extends javax.swing.JFrame {
         Usuario = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         Contraseña = new javax.swing.JPasswordField();
+        jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
 
         jScrollPane1.setViewportView(jEditorPane1);
 
@@ -82,11 +86,22 @@ public class LoginAdmin extends javax.swing.JFrame {
         });
         getContentPane().add(Contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 60, 193, -1));
 
+        jButton1.setText("Atras");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, -1, -1));
+
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/how_many_understand.gif"))); // NOI18N
         jLabel3.setText("asd");
         jLabel3.setToolTipText("");
         jLabel3.setFocusCycleRoot(true);
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-6, 0, 460, 300));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-6, 0, 450, 300));
+
+        jButton2.setText("jButton2");
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -94,12 +109,23 @@ public class LoginAdmin extends javax.swing.JFrame {
     private void iniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarActionPerformed
         ArchAdmn logic = new ArchAdmn();
         veriPass(logic.extraerPass());
-        
+        dispose();
+
     }//GEN-LAST:event_iniciarActionPerformed
 
     private void ContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContraseñaActionPerformed
-        
+
     }//GEN-LAST:event_ContraseñaActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        AdminOEst Log = new AdminOEst();
+        Log.setVisible(true);
+        Log.setEnabled(true);
+        Log.setLocationRelativeTo(null);
+        dispose();
+        
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -132,7 +158,7 @@ public class LoginAdmin extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new LoginAdmin().setVisible(true);
-                
+
             }
         });
     }
@@ -141,6 +167,8 @@ public class LoginAdmin extends javax.swing.JFrame {
     private javax.swing.JPasswordField Contraseña;
     private javax.swing.JTextField Usuario;
     private javax.swing.JButton iniciar;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
