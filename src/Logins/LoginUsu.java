@@ -5,6 +5,8 @@
  */
 package Logins;
 
+import ArchiUsu.Controlador;
+import ArchiUsu.EnvioCorreo;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -19,17 +21,36 @@ import javax.swing.JOptionPane;
  * @author GABRIEL-PC
  */
 public class LoginUsu extends javax.swing.JFrame {
-
+EnvioCorreo c =new EnvioCorreo();
     /**
      * Creates new form LoginUsu
      */
     public LoginUsu() {
         
         initComponents();
-        R3.setText("");
+        
+        
     }
     
-    public void met() throws IOException{
+    public void enviarCorreo() {
+        c.setContraseña("cxgqnwniysqfptdg");
+        c.setUsuarioCorreo("gabrielquesada1999@gmail.com");
+        c.setAsunto(R1.getText());
+        c.setMensaje(R3.getText());
+        c.setDestino(R4.getText().trim());
+        c.setNombreArchivo("A.jpg");
+        c.setRutaArchi("A.jpg");
+        
+        
+        Controlador co = new Controlador();
+        if(co.enviarCorreo(c)){
+            System.out.println("Envio correcto del correo");
+        }else{
+            JOptionPane.showMessageDialog(null,"Envio Erroneo del correo\nAy un problema vuelva a  intentarlo");
+        }
+    }
+    
+     public void met() throws IOException{
     File f;
     FileWriter v;
     BufferedWriter tv;
@@ -37,7 +58,7 @@ public class LoginUsu extends javax.swing.JFrame {
     PrintWriter v1;
     
     try{
-       File archivo = new File("RegistroDeUsu.txt");
+       File archivo = new File("RegistroUsu.txt");
     
     
     v=new FileWriter(archivo,true);
@@ -52,11 +73,10 @@ public class LoginUsu extends javax.swing.JFrame {
     Cedula=Integer.parseInt(R2.getText());
     Contraseña = R3.getText();
      Correo = R4.getText();
-    tv.write("Nombre:"+" "+ nombre +" ");
-     tv.write("Contraseña:"+" "+Contraseña +" ");
-     tv.write("Correo:"+" "+Correo +" ");
-      tv.write(String.valueOf("Cedula:"+" "+new Integer(Cedula)+" "));
-       tv.newLine();
+    tv.write(nombre+",");
+     tv.write(Contraseña+",");
+     tv.write(Correo+",");
+      tv.write(String.valueOf(new Integer(Cedula))+",");
        v1.close();
        tv.close();
     
@@ -88,6 +108,7 @@ public class LoginUsu extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         R3 = new javax.swing.JPasswordField();
+        jButton3 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         jPasswordField1.setText("jPasswordField1");
@@ -122,7 +143,7 @@ public class LoginUsu extends javax.swing.JFrame {
         });
         getContentPane().add(R4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, 160, 30));
 
-        jButton1.setText("Iniciar Sesión");
+        jButton1.setText("Registrarse");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -137,12 +158,18 @@ public class LoginUsu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 70, -1));
-
-        R3.setText("jPasswordField2");
         getContentPane().add(R3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 140, 30));
 
+        jButton3.setText("Iniciar Sesión");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 360, -1, -1));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/tableta.gif"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 510, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 500, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -160,22 +187,29 @@ public class LoginUsu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         try {
+        enviarCorreo();
+       try {
             met();
         } catch (IOException ex) {
             Logger.getLogger(LoginUsu.class.getName()).log(Level.SEVERE, null, ex);
         }
-        R1.setText("");
-        R2.setText("");
-        R3.setText("");
-        R4.setText("");
+        
         JOptionPane.showMessageDialog(rootPane, "El Usuario a sido registrado con exito");
         dispose();
+       
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void R2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_R2ActionPerformed
        R2.remove(WIDTH);
     }//GEN-LAST:event_R2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+       IniciarUsu L = new IniciarUsu();
+       L.setVisible(true);
+       L.setEnabled(true);
+       L.setLocationRelativeTo(null);
+       dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -219,6 +253,7 @@ public class LoginUsu extends javax.swing.JFrame {
     private javax.swing.JTextField R4;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
  * @author GABRIEL-PC
  */
 public class LoginAdmin extends javax.swing.JFrame {
-
+  
     public LoginAdmin() {
         initComponents();
         Contraseña.setText("");
@@ -30,8 +30,9 @@ public class LoginAdmin extends javax.swing.JFrame {
             O.setVisible(true);
             O.setEnabled(true);
             O.setLocationRelativeTo(null);
+            dispose();
         } else {
-            JOptionPane.showMessageDialog(null, "Contraseña incorrecta");
+            JOptionPane.showMessageDialog(null, "No coinsiden");
         }
     }
 
@@ -109,7 +110,7 @@ public class LoginAdmin extends javax.swing.JFrame {
     private void iniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarActionPerformed
         ArchAdmn logic = new ArchAdmn();
         veriPass(logic.extraerPass());
-        dispose();
+        
 
     }//GEN-LAST:event_iniciarActionPerformed
 

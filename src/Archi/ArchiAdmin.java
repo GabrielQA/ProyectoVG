@@ -15,9 +15,7 @@ import java.io.IOException;
  * @author GABRIEL-PC
  */
 public class ArchiAdmin {
-   
-
-    public String arch() {
+     public String arch() {
         String inString = "";
         try {
             File archivo = new File("Admin.txt");

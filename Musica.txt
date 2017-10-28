@@ -1,0 +1,5 @@
+Delicados,Yorjilian,Rut,3000,baby mi gente Mayores,2.
+PerritoPerron,Autor,Rancheras,2000,Lista de canciones,1.
+LaPuertaNegra,KevinPedrosa,Electronica,2000,Lista de canciones,8.
+Rockstar,Autor,Rock,2000,baby mi gente Mayores,3.
+
